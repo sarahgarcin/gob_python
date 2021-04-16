@@ -1,0 +1,52 @@
+body {
+    background: #e9e9e9;    
+}
+
+
+h1 {
+    font-size: 75px;
+    text-align: center;
+    text-transform: uppercase;
+    color:#222222;
+    
+}
+
+.container {
+    
+    margin: 0 auto;
+    display: flex;
+    height: 60vh;
+    width: 80%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.raw-data ,.txt-transform, .img-transform {
+   
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.export {
+    
+   display: grid;
+   place-content: center;
+}
+
+a {
+
+    cursor: pointer;
+    background: #222222;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+}
+
+
+
+@media print {
+   
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cadavre exquis</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+  </head>
+  <body>
+   
+    <h1>Données MYSTÈRES</h1>
+
+
+    <div class="container">
+
+      <div class="raw-data">
+        <h3>Données brutes<h3>
+        <p>{{ text }}</p>
+      </div>
+
+      <div class="txt-transform">
+        <h3>Texte transformé<h3>
+        <p>{{ newText }}</p>
+      </div>
+
+      <div class="img-transform">
+        <h3>Image finale<h3>
+  
+        <img src="{{ imageUrl }}">
+      </div>
+
+    </div>
+
+  <div class="export">
+    <a onclick="window.print()">Sauvegarder en PDF</a>
+    </div>
+  </body>
+</html>
