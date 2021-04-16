@@ -1,0 +1,14 @@
+# Packages
+# ------------
+bower_components/
+node_modules/
+
+# System files
+# ------------
+
+Icon
+.DS_Store
+
+# Temporary files
+# ---------------
+
