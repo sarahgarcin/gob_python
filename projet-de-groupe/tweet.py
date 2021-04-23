@@ -1,34 +1,37 @@
 import tweepy
 import random
+import os
+import pickle
+from dotenv import load_dotenv
 from dateutil import parser
 
-consumer_key = ""
-consumer_secret = ""
-
-access_token = ""
-access_token_secret = ""
+load_dotenv()
+consumer_key = os.getenv('consumer_key')
+consumer_secret = os.getenv('consumer_secret')
+access_token = os.getenv('access_token')
+access_token_secret = os.getenv('access_token_secret')
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
-bitcoin_data = {
-    'value': 46214.40976784179, 
-    'abs_change_percent': 1.34283373, 
-    'drop': False, 
-    'timestamp': '2021-04-21T13:31:14.956Z', 
-    'abs_change_percent_7d': 15.06953104
-}
+infile = open('value','rb')
+bitcoin_data = pickle.load(infile)
+infile.close()
+
+print(bitcoin_data)
 
 date_bitcoin = parser.parse(bitcoin_data["timestamp"])
 
 api = tweepy.API(auth)
 
 tweets_by_date = []
+print(date_bitcoin.date())
 
 for tweet in tweepy.Cursor(api.user_timeline, screen_name="@closerfr").items(200):
     if  date_bitcoin.date() == tweet.created_at.date():
         tweets_by_date.append(tweet.id)
 
+print(tweets_by_date)
 tweet_id = random.choice(tweets_by_date)
 tweet_url = "https://twitter.com/closerfr/status/" + str(random.choice(tweets_by_date))
 
@@ -107,9 +110,11 @@ elif tournure["type"] == "nom":
     else: 
         info_bitcoin = "la hausse du bitcoin de"
 
-taux = str(bitcoin_data['abs_change_percent_7d']) + "%"
+taux = str(round(bitcoin_data['abs_change_percent_7d'],2)) + "%"
 info_bitcoin = info_bitcoin + " " + taux
 
 final_tweet = tournure["tournure"] + " " + info_bitcoin + ponctuation + " " + tweet_url
 
 print(final_tweet)
+
+api.update_status(final_tweet)
