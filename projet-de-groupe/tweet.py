@@ -2,11 +2,11 @@ import tweepy
 import random
 from dateutil import parser
 
-consumer_key = "qfNNdjGsfmBYSy4GcGOPbBxni"
-consumer_secret = "npBVs6J2tEIWlo0WZAeXzy3iijThrlTk50zH360QyJAAh8MBCR"
+consumer_key = ""
+consumer_secret = ""
 
-access_token = "2199230268-4PDztGLs9j2hWkJI1HMT5pig95ybXm0n6CXCfEi"
-access_token_secret = "a4eJkZyaXRUtQhKHMk5B5OHRoYc1J3mtSkWT6eKxX8N1y"
+access_token = ""
+access_token_secret = ""
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
